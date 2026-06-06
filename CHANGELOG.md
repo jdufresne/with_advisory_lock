@@ -1,5 +1,49 @@
 ## Changelog
 
+## [7.5.0](https://github.com/jdufresne/with_advisory_lock/compare/with_advisory_lock-v7.5.0...with_advisory_lock/v7.5.0) (2026-06-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* require Rails 7.2+ as minimum version
+* Remove private APIs (Base, DatabaseAdapterSupport). Add full mixed adapter support for PostgreSQL/MySQL in same app. Add JRuby compatibility.
+* drop support for sqlite3
+* drop legacy version of ruby/rails ([#113](https://github.com/jdufresne/with_advisory_lock/issues/113))
+
+### Features
+
+* add #current_advisory_locks method ([#111](https://github.com/jdufresne/with_advisory_lock/issues/111)) ([ccbd3b2](https://github.com/jdufresne/with_advisory_lock/commit/ccbd3b23465f7fa1fc3800334159986c31d5c351))
+* add blocking advisory locks with deadlock detection for PostgreSQL ([#140](https://github.com/jdufresne/with_advisory_lock/issues/140)) ([f7f9aff](https://github.com/jdufresne/with_advisory_lock/commit/f7f9aff545381107a632a25511e8fc08654a28b6))
+* add release workflow ([ebbad97](https://github.com/jdufresne/with_advisory_lock/commit/ebbad97860e9a78d68d5f43a4b37794ec01ff9ed))
+* add release workflow ([5d32520](https://github.com/jdufresne/with_advisory_lock/commit/5d325201c82974991381a9fbc4d1714c9739dc4f))
+* add ruby 3.1 test/support ([#60](https://github.com/jdufresne/with_advisory_lock/issues/60)) ([514f042](https://github.com/jdufresne/with_advisory_lock/commit/514f0420d957ef30911a00d54685385bec5867c3))
+* Add testing for activerecord 7.1 and support for trilogy adapter ([#77](https://github.com/jdufresne/with_advisory_lock/issues/77)) ([69c23fe](https://github.com/jdufresne/with_advisory_lock/commit/69c23fe09887fc5d97ac7b0194825c21efe244a5))
+* Add Trilogy adapter support with MariaDB 12.0+ ([#134](https://github.com/jdufresne/with_advisory_lock/issues/134)) ([b7764cd](https://github.com/jdufresne/with_advisory_lock/commit/b7764cd9432b25b37c6da9160f980da29a5cdaa6))
+* add truffleruby support ([#62](https://github.com/jdufresne/with_advisory_lock/issues/62)) ([ec34bd4](https://github.com/jdufresne/with_advisory_lock/commit/ec34bd448e3505e5df631daaf47bb83f2f5316dc))
+* bump version for new features ([9a8c4be](https://github.com/jdufresne/with_advisory_lock/commit/9a8c4be5cf51147e60df7e5733360e3dfd8d009e))
+* drop legacy version of ruby/rails ([#113](https://github.com/jdufresne/with_advisory_lock/issues/113)) ([26fd427](https://github.com/jdufresne/with_advisory_lock/commit/26fd4278f9fa155974e6f86df7cd92dd2b7d9154))
+* drop support for sqlite3 ([26fd427](https://github.com/jdufresne/with_advisory_lock/commit/26fd4278f9fa155974e6f86df7cd92dd2b7d9154))
+* fire Ruby from its second job checking locks and let PostgreSQL do what it's paid for ([#124](https://github.com/jdufresne/with_advisory_lock/issues/124)) ([f7f8dbc](https://github.com/jdufresne/with_advisory_lock/commit/f7f8dbcd69842a358d0d70227bcc52ba3183c098))
+* handle connection disconnection gracefully ([1944e98](https://github.com/jdufresne/with_advisory_lock/commit/1944e98877917e234bfe597f9358c0b74643a045))
+* handle connection disconnection gracefully ([77046a9](https://github.com/jdufresne/with_advisory_lock/commit/77046a94c7504f77a59fae6fbcd75e73ed41bf23))
+* implement MySQL native timeout support ([#123](https://github.com/jdufresne/with_advisory_lock/issues/123)) ([387dedd](https://github.com/jdufresne/with_advisory_lock/commit/387dedd133c897f7a3da13ed2ebbd9223b81317d))
+* move to rails dummy app to test multidb setup ([#115](https://github.com/jdufresne/with_advisory_lock/issues/115)) ([71a3431](https://github.com/jdufresne/with_advisory_lock/commit/71a34316b365a0f3be0e8a046db14289e69efc9c))
+* require Rails 7.2+ as minimum version ([d4e7826](https://github.com/jdufresne/with_advisory_lock/commit/d4e7826ddc216c103cd666674068cb7f512fc32d))
+* support of multidb  ([#116](https://github.com/jdufresne/with_advisory_lock/issues/116)) ([935e7e5](https://github.com/jdufresne/with_advisory_lock/commit/935e7e5fb05dad2eba034745d2ef49e11c163f7d))
+* use current connnection instead of the one in ActiveRecord::Base ([#90](https://github.com/jdufresne/with_advisory_lock/issues/90)) ([c28a172](https://github.com/jdufresne/with_advisory_lock/commit/c28a172a5a64594448b6090501fc0b8cbace06f6))
+* use zeitwerk loader instead of ActiveSupport::Autoload ([21bd929](https://github.com/jdufresne/with_advisory_lock/commit/21bd929ad97c3a27ce2dde0f8453e1d2926a1302))
+* use zeitwerk loader instead of ActiveSupport::Autoload ([b5082fd](https://github.com/jdufresne/with_advisory_lock/commit/b5082fddacacacff48139f5bf509601a37945a0e))
+* validate transaction-level locks require active transaction ([#122](https://github.com/jdufresne/with_advisory_lock/issues/122)) ([e4bc6c1](https://github.com/jdufresne/with_advisory_lock/commit/e4bc6c10666e02c560f18629df0106c39bb85e19))
+
+
+### Bug Fixes
+
+* handle ActiveRecord's release_advisory_lock signature for Rails 7.2+ ([#127](https://github.com/jdufresne/with_advisory_lock/issues/127)) ([94253ca](https://github.com/jdufresne/with_advisory_lock/commit/94253ca2af7f684a3c99645765853546c3da8e02)), closes [#126](https://github.com/jdufresne/with_advisory_lock/issues/126)
+* Removed MySQL unused lock variable and broaden SQLite detection. ([#94](https://github.com/jdufresne/with_advisory_lock/issues/94)) ([f818a18](https://github.com/jdufresne/with_advisory_lock/commit/f818a181dde6711c8439c4cbf67c4525a09d346e))
+* Replace connection.select_value with connection.query_value ([#131](https://github.com/jdufresne/with_advisory_lock/issues/131)) ([dc01977](https://github.com/jdufresne/with_advisory_lock/commit/dc01977e5e3a120843b19a5e6befd538c6e36516))
+* Use monotonic clock so postgres timeouts are unaffected by system clock changes ([#141](https://github.com/jdufresne/with_advisory_lock/issues/141)) ([929e010](https://github.com/jdufresne/with_advisory_lock/commit/929e0103e5ffc4c66f9088942441f764de1bc650))
+* User may sometimes pass in non-strings, such as integers ([#55](https://github.com/jdufresne/with_advisory_lock/issues/55)) ([9885597](https://github.com/jdufresne/with_advisory_lock/commit/988559747363ef00958fcf782317e76c40ffa2a3))
+
 ## [7.5.0](https://github.com/ClosureTree/with_advisory_lock/compare/with_advisory_lock/v7.0.2...with_advisory_lock/v7.5.0) (2026-01-21)
 
 
